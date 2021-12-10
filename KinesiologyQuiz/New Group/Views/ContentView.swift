@@ -22,6 +22,9 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 25) {
             
+            DiagramView(image: "skeleton",
+                        horizontalPadding: 50)
+            
             //Output
             Text(currentCard.question)
                 .font(.largeTitle)
