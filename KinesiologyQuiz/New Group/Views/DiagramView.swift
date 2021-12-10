@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct DiagramView: View {
+    // MARK: Stored properties
+    let image: String
+    let horizontalPadding: Double
+    
+    // MARK: Computed properties
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            
+            Spacer()
+            
+            Image(image)
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, horizontalPadding)
+            
+            Spacer()
+
+        }
+
     }
 }
 
 struct DiagramView_Previews: PreviewProvider {
     static var previews: some View {
-        DiagramView()
+        DiagramView(image: "skeleton",
+                    horizontalPadding: 50)
     }
 }
