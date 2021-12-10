@@ -11,10 +11,10 @@ struct ContentView: View {
     
     // MARK: Stored properties
     
-    //This is the card we are currently quizzing on
-    @State var currentCard: Quiz = listOfQuiz.randomElement()!
-    //This is the prior card that we showed
-    @State var previousCard: Quiz = listOfQuiz.randomElement()!
+    //This is the quiz we are currently quizzing on
+    @State var currentQuiz: Quiz = listOfQuiz.randomElement()!
+    //This is the prior quiz that we showed
+    @State var previousQuiz: Quiz = listOfQuiz.randomElement()!
     //This controls whether the answer is visible
     @State var isAnswerShowing = false
     
@@ -25,9 +25,22 @@ struct ContentView: View {
             DiagramView(image: "skeleton",
                         horizontalPadding: 50)
             
+            HStack{
+            Text("Question:")
+                .font(.title)
+                .bold()
+                Spacer()
+            }
+            
+            
             //Output
-            Text(currentCard.question)
-                .font(.largeTitle)
+            Text(currentQuiz.question)
+              //  .font(.subheadline)
+            
+            // Input
+            TextField("This argument should the describe the purpose of the text field within the context of your app, e.g.: 'Name' or 'Email Address'",
+                      text: .constant(""),
+                      prompt: Text("Type answer..."))
             
             //Input
             Button(action: {
@@ -41,8 +54,8 @@ struct ContentView: View {
                 .buttonStyle(.bordered)
             
             //Output
-            Text(currentCard.answer)
-                .font(.title)
+            Text(currentQuiz.answer)
+            //  .font(.title)
             //              CONDITION     True  False
                 .opacity(isAnswerShowing ? 1.0 : 0.0)
             
@@ -50,15 +63,15 @@ struct ContentView: View {
             //Input
             Button(action: {
                 
-                // previousCard = listOfCards.randomElement()!
+                // previousquiz = listOfQuiz.randomElement()!
                 
                 //Hide the answer
                 //withAnimation {
                 isAnswerShowing = false
                 //}
                 
-                // Pick a new Card
-                currentCard = listOfQuiz.randomElement()!
+                // Pick a new Quiz
+                currentQuiz = listOfQuiz.randomElement()!
                 
                 // print("Button was pressed")
             }, label: {
